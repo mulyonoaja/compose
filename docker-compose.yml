@@ -51,3 +51,4 @@ volumes:
        # setting agar volume (data) tdk dihapus 
        # saat docker-compose down
        external : true
+       
