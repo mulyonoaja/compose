@@ -1,7 +1,7 @@
 ###referensi https://medium.com/@nanoyulian/berkenalan-dengan-docker-compose-docker-63208f45ca4c
 #https://hub.docker.com/_/postgres
 #=======================================================
----
+
 # download image PHP7.2-apache dari docker-hub
 FROM php:7.2-apache
 # aktifkan direktori kerja pada image PHP7.2-apache
@@ -16,8 +16,8 @@ RUN apt-get update
 RUN apt-get install -y libpq-dev \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install pdo pdo_pgsql pgsql
-...    
----    
+    
+    
 #download image dr docker-hub
 FROM postgres:10.0-alpine
 # aktifkan direktori kerja pada image postgres:10.0-alpine
@@ -27,5 +27,5 @@ WORKDIR mulyonoaja/docker-entrypoint-initdb.d
 #KE [WORKDIR] di container. 
 #COPY[spasi]lokasi_host[spasi]lokasi_target_container
 COPY . .
-...    
+    
     
