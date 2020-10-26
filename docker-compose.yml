@@ -7,7 +7,7 @@ services:
          #posisi Dockerfile berada di path yg sama
          context: ./webapp
          #file dockerfile yang digunakan
-         dockerfile: Dockerfile.prod
+         dockerfile: Dockerfile
       #nama image hasil docker-compose build
       image: nano/web_app:v1
       #nama container dari image web yang dijalankan
@@ -28,7 +28,7 @@ services:
       build:
          #posisi Dockerfile 
          context: ./db_postgres
-         dockerfile: Dockerfile.prod
+         dockerfile: Dockerfile
       # Digunakan untuk setting koneksi host di aplikasi webapp.
       container_name: postgres_host
       #persisten volume (tetap), Host : container
