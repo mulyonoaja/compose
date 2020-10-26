@@ -5,7 +5,7 @@ services:
    webapp:
       build:
          #posisi Dockerfile berada di path yg sama
-         context: webapp/
+         context: ./webapp
          #file dockerfile yang digunakan
          dockerfile: Dockerfile.prod
       #nama image hasil docker-compose build
@@ -27,7 +27,7 @@ services:
       image: webapp_pgsql:v1
       build:
          #posisi Dockerfile 
-         context: db_postgres/
+         context: ./db_postgres
          dockerfile: Dockerfile.prod
       # Digunakan untuk setting koneksi host di aplikasi webapp.
       container_name: postgres_host
