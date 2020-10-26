@@ -28,7 +28,7 @@ services:
       build:
          #posisi Dockerfile 
          #context: ./db_postgres
-         dockerfile: Dockerfile.prod
+         dockerfile: Dockerfile
       # Digunakan untuk setting koneksi host di aplikasi webapp.
       container_name: postgres_host
       #persisten volume (tetap), Host : container
