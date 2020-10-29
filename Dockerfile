@@ -1,2 +1,4 @@
-FROM nginx:latest
-COPY index.html /usr/share/nginx/html/.
+FROM centos:7
+RUN yum install httpd -y
+COPY index.html /var/www/html
+CMD apachectl –DFOREGROUND
