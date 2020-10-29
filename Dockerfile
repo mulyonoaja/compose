@@ -1,14 +1,19 @@
-# download image PHP7.2-apache dari docker-hub
-FROM php:7.2-apache
-# aktifkan direktori kerja pada image PHP7.2-apache
-WORKDIR /var/www/html
-# copy (.) semua file/folder yg selevel dengan file ini ke lokasi 
-# /var/www/html  
-COPY . /var/www/html/
-# downloads list package dari repositori dan update untuk mendapatkan versi paket terbaru dan dependencynya. 
-RUN apt-get update
-# Install PDO and PGSQL Drivers, dan setting pqsql (enabled) 
-# tanda \ maksudnya enter
-RUN apt-get install -y libpq-dev \
-    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo pdo_pgsql pgsql
+FROM ubuntu:18.04
+
+# Install dependencies
+RUN apt-get update && \
+ apt-get -y install apache2
+
+# Install apache and write hello world message
+RUN echo 'Hello World!' > /var/www/html/index.html
+
+# Configure apache
+RUN echo '. /etc/apache2/envvars' > /root/run_apache.sh && \
+ echo 'mkdir -p /var/run/apache2' >> /root/run_apache.sh && \
+ echo 'mkdir -p /var/lock/apache2' >> /root/run_apache.sh && \
+ echo '/usr/sbin/apache2 -D FOREGROUND' >> /root/run_apache.sh && \
+ chmod 755 /root/run_apache.sh
+
+EXPOSE 80
+
+CMD /root/run_apache.sh
